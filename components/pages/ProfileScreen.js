@@ -54,12 +54,10 @@ export default class ProfileScreen extends React.Component {
 
   async componentDidMount() {
     await Font.loadAsync({
-      //'georgia': require('/Users/MortenDalgaardOttesen/Desktop/exercise11-12---Firebase-login/assets/fonts/Georgia.ttf'),
-
-      'georgia': require('../../assets/fonts/Georgia.ttf'),
-      'regular': require('../../assets/fonts/Montserrat-Regular.ttf'),
-      'light': require('../../assets/fonts/Montserrat-Light.ttf'),
-      'bold': require('../../assets/fonts/Montserrat-Bold.ttf'),
+      'georgia': require('/Users/MortenDalgaardOttesen/Desktop/exercise11-12---Firebase-login-kopi/assets/fonts/Georgia.ttf'),
+      'regular': require('/Users/MortenDalgaardOttesen/Desktop/exercise11-12---Firebase-login-kopi/assets/fonts/Montserrat-Regular.ttf'),
+      'light': require('/Users/MortenDalgaardOttesen/Desktop/exercise11-12---Firebase-login-kopi/assets/fonts/Montserrat-Light.ttf'),
+      'bold': require('/Users/MortenDalgaardOttesen/Desktop/exercise11-12---Firebase-login-kopi/assets/fonts/Montserrat-Bold.ttf'),
     });
 
     this.setState({ fontLoaded: true });
@@ -93,28 +91,28 @@ export default class ProfileScreen extends React.Component {
               </View>
               <View style={{flex: 1, marginTop: 20, width: SCREEN_WIDTH - 80, marginLeft: 40}}>
                 <Text style={{flex: 1, fontSize: 15, color: 'black', fontFamily: 'regular'}}>
-                  21 år, studerer HA(it) på CBS i København på 5. semester. Er meget social og udadvendt! 
+                  21 years old, studying HA(it) on CBS in Copenhagen on my 5th semester. As a person I am very outgoing and social.  
                 </Text>
               </View>
               <View style={{flex: 1, marginTop: 30}}>
                 <Text style={{flex: 1, fontSize: 15, color: 'black', fontFamily: 'regular', marginLeft: 40}}>
-                  INFO
+                  Information
                 </Text>
                 <View style={{flex: 0, flexDirection: 'row', marginTop: 20, marginHorizontal: 30}}>
                   <View style={{flex: 1, flexDirection: 'row'}}>
                     <View style={{flex: 0}}>
-                      <Text style={styles.infoTypeLabel}>  Alder</Text>
-                      <Text style={styles.infoTypeLabel}>  Højde</Text>
-                      <Text style={styles.infoTypeLabel}>  Vægt</Text>
-                      <Text style={styles.infoTypeLabel}>  Lokation</Text>
-                      <Text style={styles.infoTypeLabel}>  Interesser</Text>
+                      <Text style={styles.infoTypeLabel}>  Age</Text>
+                      <Text style={styles.infoTypeLabel}>  Height</Text>
+                      <Text style={styles.infoTypeLabel}>  Weight</Text>
+                      <Text style={styles.infoTypeLabel}>  Location</Text>
+                      <Text style={styles.infoTypeLabel}>  Interests</Text>
                     </View>
                     <View style={{flex: 1, marginLeft: 10}}>
                       <Text style={styles.infoAnswerLabel}>21</Text>
                       <Text style={styles.infoAnswerLabel}>190 cm</Text>
                       <Text style={styles.infoAnswerLabel}>71 kg</Text>
                       <Text style={styles.infoAnswerLabel}>Frederiksberg, København</Text>
-                      <Text style={styles.infoAnswerLabel}>Fodbold, Basketball</Text>
+                      <Text style={styles.infoAnswerLabel}>Football, Basketball</Text>
                     </View>
                   </View>
                 </View>
@@ -128,10 +126,10 @@ export default class ProfileScreen extends React.Component {
                   start: [1, 0],
                   end: [0.2, 0]
                 }}
-                title="Skriv til Morten"
+                title="Message Morten"
                 titleStyle={{ fontFamily: 'regular', fontSize: 20, color: 'white', textAlign: 'center' }}
-                onPress={() => console.log('Message Theresa')}
-                activeOpacity={0.5}
+                onPress={() => alert('Morten has received your message')}
+                activeOpacity={1.0}
               />
             </ScrollView>
           </View> :

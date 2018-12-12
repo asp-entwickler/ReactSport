@@ -11,57 +11,41 @@ export default class HomeScreen extends React.Component {
     this.state = {
       isLoading: true
     }
-    //Android viser en warning med en timer. Dette får RN til at ignorere fejlen. Der kan læses mere om fejlen her 
-    // https://github.com/firebase/firebase-js-sdk/issues/97 
     console.ignoredYellowBox = [
       'Setting a timer'
       ];
   }
 
-  // static navigationOptions = {
-  //   title: "Albums"
-  // };
+  static navigationOptions = {
+    title: "Sports Equipment"
+  };
 
   componentDidMount() {
-    this.getAlbumsFromApiAsync();
+    this.getItemsFromApiAsync();
   }
 
-  getAlbumsFromApiAsync() {
+  getItemsFromApiAsync() {
 
     var that = this;
 
-    // return firebase.database().ref('albums').on('value', function (snapshot) {
-    //   var albums = Object.values(snapshot.val());
-    //   //Brug artist ID til at hente fulde navn og erstat dataen. 
-    //   //Da dataen i øvelserne kun er fra Taylor Swift, går vi bare ind i første object i Arrayet, 
-    //   //da vi ved alle objekter har samme artist. Er der forskellige, kan man loope igennem arrayet og erstatte variabler
-    //   that.setState({
-    //     isLoading: false,
-    //     dataSource: albums,
-    //   });
-    // });
+    return firebase.database().ref('items').on('value', function (snapshot) {
+        var items = Object.values(snapshot.val());
+        var sellerID = items[0].seller;
 
+        //Lav et nyt database-kald:
+        firebase.database().ref('seller/' + sellerID).once('value', function (snapshotSeller) {
 
-    return firebase.database().ref('albums').on('value', function (snapshot) {
-      var albums = Object.values(snapshot.val());
-      var artistID = albums[0].artist;
-
-      //Lav et nyt database-kald:
-      firebase.database().ref('artists/' + artistID).once('value', function (snapshotArtist) {
-
-        //loop over albums og erstat
-        albums.forEach(function(album) {
-          album.artist = snapshotArtist.val().firstName + " " + snapshotArtist.val().lastName;
+          //loop over albums og erstat
+          items.forEach(function(item) {
+            item.seller = snapshotSeller.val().firstName + " " + snapshotSeller.val().lastName;
+          });
+          that.setState({
+            isLoading: false,
+            dataSource: items,
+          });
         });
-        that.setState({
-          isLoading: false,
-          dataSource: albums,
-        });
+        
       });
-      
-  });
-
-
   }
 
 
@@ -88,7 +72,7 @@ export default class HomeScreen extends React.Component {
             title={item.title}
             titleStyle={{ color: 'tomato', fontWeight: 'bold' }}
             subtitleStyle={{ color: 'tomato' }}
-            subtitle={item.artist}
+            subtitle={item.seller}
             chevronColor='tomato'
             onPress={() => this.props.navigation.navigate('Details', item)}
             containerStyle={{ backgroundColor: 'white' }}

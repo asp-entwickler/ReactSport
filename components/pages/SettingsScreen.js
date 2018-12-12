@@ -9,15 +9,14 @@ export default class SettingsScreen extends React.Component {
   };
   render() {
     return (
-      <View style={{ flex: 1, justifyContent: 'center', alignItems: 'stretch' }}>
-        <Text>Settings!</Text>
+      <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
         <Button
           title="Go to Home"
           onPress={() => this.props.navigation.navigate('Home')}
         />
         <Button
-          title="Go to Details"
-          onPress={() => this.props.navigation.navigate('Details')}
+          title="Go to Profile"
+          onPress={() => this.props.navigation.navigate('Profile')}
         />
 
        <Button title="Log Out" onPress={() => firebase.auth().signOut()}></Button>

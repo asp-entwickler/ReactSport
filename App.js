@@ -21,12 +21,12 @@ export default class App extends React.Component {
 
   componentWillMount() {
     firebase.initializeApp({
-      apiKey: "AIzaSyBlOmblpvHJewEQhobxLrttvcTT-qQybH4",
-      authDomain: "sporty-78a1a.firebaseapp.com",
-      databaseURL: "https://sporty-78a1a.firebaseio.com",
-      projectId: "sporty-78a1a",
-      storageBucket: "sporty-78a1a.appspot.com",
-      messagingSenderId: "393222333730"
+      apiKey: "AIzaSyCiMwwEiOOnqg3E6KBiV6gp5jOTiUVEL-c",
+      authDomain: "testproject-b0154.firebaseapp.com",
+      databaseURL: "https://testproject-b0154.firebaseio.com",
+      projectId: "testproject-b0154",
+      storageBucket: "testproject-b0154.appspot.com",
+      messagingSenderId: "782440153458"
       });
 
     firebase.auth().onAuthStateChanged(user => {

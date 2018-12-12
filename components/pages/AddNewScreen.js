@@ -8,10 +8,9 @@ export default class AddNewScreen extends React.Component {
     super(props);
 
     this.state={
-      artist: '',
+      seller: '',
       title: '',
       error: '',
-      //image: 'https://images-na.ssl-images-amazon.com/images/I/41j7-7yboXL.jpg'
       image: 'https://images.sportsdirect.com/images/products/37129661_l.jpg'
     }
   }
@@ -21,13 +20,13 @@ export default class AddNewScreen extends React.Component {
   };
 
   
-    writeAlbum(){
-      const artist = this.state.artist;
+    writeItem(){
+      const seller = this.state.seller;
       const title = this.state.title;
       const image = this.state.image;
 
-      firebase.database().ref('albums/').push({
-          artist,
+      firebase.database().ref('items/').push({
+          seller,
           title,
           image
       }).then((data)=>{
@@ -44,12 +43,12 @@ export default class AddNewScreen extends React.Component {
            <TextInput
           label='Equipment'
             placeholder='Equipment'
-            value={this.state.artist}
-            onChangeText={artist => this.setState({ artist })}
+            value={this.state.seller}
+            onChangeText={seller => this.setState({ seller })}
           />
           <TextInput
             label='Equipment title'
-            placeholder='Equipment title'
+            placeholder='Equipment Title'
             value={this.state.title}
             onChangeText={title => this.setState({ title })}
           />
@@ -58,7 +57,9 @@ export default class AddNewScreen extends React.Component {
         <Text style={styles.errorTextStyle}>
           {this.state.error}
         </Text>
-            <Button title='Add new Album' onPress={this.writeAlbum.bind(this)}/>
+            <Button title='Add new equipment' onPress={this.writeItem.bind(this)}/>
+            <Button title="Take a picture of your item!" onPress={() => this.props.navigation.navigate('Camera')}
+        />
 
 
 
@@ -71,7 +72,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#fff',
-    alignItems: 'stretch',
+    alignItems: 'center',
     justifyContent: 'center',
   },
   errorTextStyle: {
