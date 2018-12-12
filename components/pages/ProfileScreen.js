@@ -54,10 +54,10 @@ export default class ProfileScreen extends React.Component {
 
   async componentDidMount() {
     await Font.loadAsync({
-      'georgia': require('/Users/MortenDalgaardOttesen/Desktop/exercise11-12---Firebase-login-kopi/assets/fonts/Georgia.ttf'),
-      'regular': require('/Users/MortenDalgaardOttesen/Desktop/exercise11-12---Firebase-login-kopi/assets/fonts/Montserrat-Regular.ttf'),
-      'light': require('/Users/MortenDalgaardOttesen/Desktop/exercise11-12---Firebase-login-kopi/assets/fonts/Montserrat-Light.ttf'),
-      'bold': require('/Users/MortenDalgaardOttesen/Desktop/exercise11-12---Firebase-login-kopi/assets/fonts/Montserrat-Bold.ttf'),
+      'georgia': require('../../assets/fonts/Georgia.ttf'),
+      'regular': require('../../assets/fonts/Montserrat-Regular.ttf'),
+      'light': require('../../assets/fonts/Montserrat-Light.ttf'),
+      'bold': require('../../assets/fonts/Montserrat-Bold.ttf')
     });
 
     this.setState({ fontLoaded: true });

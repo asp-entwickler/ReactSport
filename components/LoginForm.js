@@ -4,7 +4,7 @@ import firebase from 'firebase';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import SignUpForm from './SignUpForm';
 
-const BG_IMAGE = require('/Users/MortenDalgaardOttesen/Desktop/exercise11-12---Firebase-login-kopi/assets/images/newLoginPicture.png');
+const BG_IMAGE = require('../assets/images/newLoginPicture.png');
 
 export default class LoginForm extends Component {
 
@@ -44,10 +44,6 @@ export default class LoginForm extends Component {
       case true: 
       return (
         <View style={styles.container}>
-        <ImageBackground
-          source={BG_IMAGE}
-          style={styles.bgImage}
-          ></ImageBackground>
           <Text style={{fontWeight: 'bold', fontSize: 20, marginBottom: 8}}>Sign in</Text>
           <TextInput
             label='Username'
@@ -67,8 +63,8 @@ export default class LoginForm extends Component {
           </Text>
   
           {this.renderButton()}
-          <Button 
-          title='Sign up' onPress={() => this.setState({hasLogin : false})}/>
+          <Button title='Sign up' onPress={() => this.setState({hasLogin : false})}/>
+          <ImageBackground source={BG_IMAGE} style={styles.bgImage}></ImageBackground>
         </View>
       );
       case false: {
