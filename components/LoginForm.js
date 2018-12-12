@@ -1,7 +1,12 @@
 import React, { Component } from 'react';
-import { Text, StyleSheet, ActivityIndicator, TextInput, View, Button } from 'react-native';
+//import { Text, StyleSheet, ActivityIndicator, TextInput, View, Button } from 'react-native';
+import { Text, StyleSheet, ActivityIndicator, TextInput, View, Button, ImageBackground, Dimensions } from 'react-native';
 import firebase from 'firebase';
 import SignUpForm from './SignUpForm';
+
+//const BG_IMAGE = require('/Users/MortenDalgaardOttesen/Desktop/exercise11-12---Firebase-login/assets/images/newLoginPicture.png');
+//const BG_IMAGE = require('../assets/images/newLoginPicture.png');
+const BG_IMAGE = require('../assets/images/loginPicture.jpg');
 
 export default class LoginForm extends Component {
 
@@ -39,8 +44,35 @@ export default class LoginForm extends Component {
   render() {
     switch(this.state.hasLogin) {
       case true: 
+      
+      // return (
+      //   <View>
+      //     <Text>Sign in</Text>
+      //     <TextInput
+      //       label='Username'
+      //       placeholder='user@mail.com'
+      //       value={this.state.email}
+      //       onChangeText={email => this.setState({ email })}
+      //     />
+      //     <TextInput
+      //       placeholder='password'
+      //       value={this.state.password}
+      //       secureTextEntry={true}
+      //       onChangeText={password => this.setState({ password })}
+      //     />
+  
+      //     <Text style={styles.errorTextStyle}>
+      //       {this.state.error}
+      //     </Text>
+  
+      //     {this.renderButton()}
+      //     <Button title='Sign up' onPress={() => this.setState({hasLogin : false})}/>
+      //   </View>
+      // );
+
       return (
-        <View>
+        <View style={styles.container}>
+        
           <Text>Sign in</Text>
           <TextInput
             label='Username'
@@ -54,15 +86,17 @@ export default class LoginForm extends Component {
             secureTextEntry={true}
             onChangeText={password => this.setState({ password })}
           />
-  
+
           <Text style={styles.errorTextStyle}>
             {this.state.error}
           </Text>
   
           {this.renderButton()}
           <Button title='Sign up' onPress={() => this.setState({hasLogin : false})}/>
+          <ImageBackground source={BG_IMAGE} style={styles.bgImage}></ImageBackground>
         </View>
       );
+
       case false: {
         return(
           <View>
@@ -83,16 +117,38 @@ export default class LoginForm extends Component {
     );
   }
 }
+// const styles = StyleSheet.create({
+//   container: {
+//     flex: 1,
+//     justifyContent: 'center',
+//     alignItems: 'center',
+//     backgroundColor: '#F5FCFF',
+//   },
+//   errorTextStyle: {
+//     fontSize: 20,
+//     alignSelf: 'center',
+//     color: 'red'
+//   }
+// });
+
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#F5FCFF',
+    alignItems: 'center', 
+    justifyContent: 'center'    
   },
-  errorTextStyle: {
-    fontSize: 20,
-    alignSelf: 'center',
-    color: 'red'
+  bgImage: {
+    width: 380,
+    height: 380,
+    justifyContent: 'center',
+    alignItems: 'center'
+  },
+  loginText: {
+    color: 'white',
+    fontSize: 30,
+    fontWeight: 'bold',
+    backgroundColor: 'transparent',
+    justifyContent: 'center',
+    alignItems: 'center'
   }
 });

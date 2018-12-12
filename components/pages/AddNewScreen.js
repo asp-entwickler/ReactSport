@@ -11,12 +11,13 @@ export default class AddNewScreen extends React.Component {
       artist: '',
       title: '',
       error: '',
-      image: 'https://images-na.ssl-images-amazon.com/images/I/41j7-7yboXL.jpg'
+      //image: 'https://images-na.ssl-images-amazon.com/images/I/41j7-7yboXL.jpg'
+      image: 'https://images.sportsdirect.com/images/products/37129661_l.jpg'
     }
   }
 
   static navigationOptions = {
-    title: "Add New Album"
+    title: "Add New Equipment"
   };
 
   
@@ -30,7 +31,7 @@ export default class AddNewScreen extends React.Component {
           title,
           image
       }).then((data)=>{
-          alert("Album created successfully");
+          alert("Equipment added successfully");
       }).catch((error)=>{
           //error callback
           console.log('error ' , error)
@@ -41,14 +42,14 @@ export default class AddNewScreen extends React.Component {
     return (
         <View style={styles.container}>
            <TextInput
-          label='Artist'
-            placeholder='Artist'
+          label='Equipment'
+            placeholder='Equipment'
             value={this.state.artist}
             onChangeText={artist => this.setState({ artist })}
           />
           <TextInput
-            label='Album Title'
-            placeholder='Album Title'
+            label='Equipment title'
+            placeholder='Equipment title'
             value={this.state.title}
             onChangeText={title => this.setState({ title })}
           />
