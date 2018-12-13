@@ -1,7 +1,7 @@
 import React from 'react';
 import { createStackNavigator, createBottomTabNavigator } from 'react-navigation';
 import HomeScreen from './HomeScreen';
-import SettingsScreen from './SettingsScreen';
+import BasketScreen from './BasketScreen';
 import DetailsScreen from './DetailsScreen'; 
 import AddNewScreen from './AddNewScreen'
 import { Ionicons } from '@expo/vector-icons';
@@ -16,8 +16,8 @@ const HomeStack = createStackNavigator({
   Camera: { screen: CameraScreen },
 });
 
-const SettingsStack = createStackNavigator({
-  Settings: { screen: SettingsScreen },
+const BasketStack = createStackNavigator({
+  Basket: { screen: BasketScreen },
   Details: { screen: DetailsScreen },
   Location: { screen: LocationScreen },
   Camera: { screen: CameraScreen },
@@ -34,7 +34,7 @@ export default createBottomTabNavigator(
   {
     Home: { screen: HomeStack },
     AddNew: {screen: AddNewScreen},
-    Settings: { screen: SettingsStack },
+    Basket: { screen: BasketStack },
     Profile: { screen: ProfileStack },
   },
 
@@ -50,8 +50,8 @@ export default createBottomTabNavigator(
           iconName = 'md-information-circle';
         } else if (routeName === 'AddNew') {
           iconName = 'ios-add-circle';
-        } else if (routeName === 'Settings') {
-          iconName = 'md-options';
+        } else if (routeName === 'Basket') {
+          iconName = 'md-basket';
         } else if (routeName === 'Profile') {
           iconName = 'md-contact';
         }

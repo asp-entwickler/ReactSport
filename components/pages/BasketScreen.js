@@ -3,8 +3,11 @@ import { ActivityIndicator, FlatList, View, Button, Image } from 'react-native';
 import { ListItem } from 'react-native-elements';
 import firebase from 'firebase';
 
-export default class HomeScreen extends React.Component {
+export default class BasketScreen extends React.Component {
 
+  static navigationOptions = {
+    title: "Basket"
+  };
   constructor(props) {
 
     super(props);
@@ -17,31 +20,31 @@ export default class HomeScreen extends React.Component {
   }
 
   static navigationOptions = {
-    title: "Sports Equipment"
+    title: "Your basket"
   };
 
   componentDidMount() {
-    this.getItemsFromApiAsync();
+    this.getBasketFromApiAsync();
   }
 
-  getItemsFromApiAsync() {
+  getBasketFromApiAsync() {
 
     var that = this;
 
-    return firebase.database().ref('items').on('value', function (snapshot) {
-        var items = Object.values(snapshot.val());
-        var sellerID = items[0].seller;
+    return firebase.database().ref('basket').on('value', function (snapshot) {
+        var basket = Object.values(snapshot.val());
+        var sellerID = basket[0].seller;
 
         //Lav et nyt database-kald:
         firebase.database().ref('sellers/' + sellerID).once('value', function (snapshotSeller) {
 
           //loop over albums og erstat
-          items.forEach(function(item) {
-            item.seller = snapshotSeller.val().firstName + " " + snapshotSeller.val().lastName;
+          basket.forEach(function(basket) {
+            basket.seller = snapshotSeller.val().firstName + " " + snapshotSeller.val().lastName;
           });
           that.setState({
             isLoading: false,
-            dataSource: items,
+            dataSource: basket,
           });
         });
         
