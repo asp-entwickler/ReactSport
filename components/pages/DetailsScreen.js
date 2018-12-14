@@ -9,17 +9,26 @@ const IMAGE_SIZE = SCREEN_WIDTH - 20;
 
 export default class DetailsScreen extends React.Component {
 
+  constructor(props) {
+    super(props);
+  }
+
   static navigationOptions = {
     title: "Details"
   };
 
   render() {
     const {navigation} = this.props;
+    const image = navigation.getParam('image', 'No Image');
     const title = navigation.getParam('title', 'No title');
     const seller = navigation.getParam('seller', 'No seller defined');
 
     return (
+
         <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
+
+          <Image source={{ uri: image }} style={{ width: 130, height: 130 }} />
+
           <Text style={{justifyContent: 'center', alignItems: 'center'}}>Title: {title}</Text>
           <Text>Sold by: {seller}</Text>
           <Button
