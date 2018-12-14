@@ -3,7 +3,7 @@ import { createStackNavigator, createBottomTabNavigator } from 'react-navigation
 import HomeScreen from './HomeScreen';
 import BasketScreen from './BasketScreen';
 import DetailsScreen from './DetailsScreen'; 
-import AddNewScreen from './AddNewScreen'
+import AddNewScreen from './AddNewScreen';
 import { Ionicons } from '@expo/vector-icons';
 import ProfileScreen from './ProfileScreen';
 import LocationScreen from './LocationScreen';
@@ -20,22 +20,22 @@ const BasketStack = createStackNavigator({
   Basket: { screen: BasketScreen },
   Details: { screen: DetailsScreen },
   Location: { screen: LocationScreen },
-  Camera: { screen: CameraScreen },
+  Camera: { screen: CameraScreen }
 });
 
 const ProfileStack = createStackNavigator({
   Profile: { screen: ProfileScreen },
   Details: { screen: DetailsScreen },
   Location: { screen: LocationScreen },
-  Camera: { screen: CameraScreen },
-})
+  Camera: { screen: CameraScreen }
+});
 
 export default createBottomTabNavigator(
   {
     Home: { screen: HomeStack },
     AddNew: {screen: AddNewScreen},
     Basket: { screen: BasketStack },
-    Profile: { screen: ProfileStack },
+    Profile: { screen: ProfileStack }
   },
 
   {

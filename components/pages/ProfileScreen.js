@@ -10,7 +10,8 @@ const SCREEN_HEIGHT = Dimensions.get('window').height;
 
 const IMAGE_SIZE = SCREEN_WIDTH - 20;
 
-class CustomButton extends Component {
+export default class ProfileScreen extends Component {
+
   constructor() {
     super();
 
