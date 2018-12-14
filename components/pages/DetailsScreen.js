@@ -1,5 +1,5 @@
 import React from 'react';
-import {View, Button, Text, StyleSheet, Dimensions, TouchableOpacity, StatusBar, Image } from 'react-native';
+import { View, Button, Text, StyleSheet, Dimensions, TouchableOpacity, StatusBar, Image } from 'react-native';
 import firebase from 'firebase';
 
 const SCREEN_WIDTH = Dimensions.get('window').width;
@@ -18,46 +18,63 @@ export default class DetailsScreen extends React.Component {
   };
 
   render() {
-    const {navigation} = this.props;
-    const image = navigation.getParam('image', 'No Image');
+    const { navigation } = this.props;
+    const image = navigation.getParam('image', 'https://_No_Image_URL');
     const title = navigation.getParam('title', 'No title');
     const seller = navigation.getParam('seller', 'No seller defined');
 
     return (
 
-        <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
+      <View>
+        <View style={styles.container}>
 
-          <Image source={{ uri: image }} style={{ width: 130, height: 130 }} />
+          <View style={{ width: 130, height: 130 }}>
+            <Image source={{ uri: image }} style={{ width: 130, height: 130 }} />
+          </View>
 
-          <Text style={{justifyContent: 'center', alignItems: 'center'}}>Title: {title}</Text>
-          <Text>Sold by: {seller}</Text>
-          <Button
-          title="Location of seller"
-          onPress={() => this.props.navigation.navigate('Location')}
-        />
-        <Button
-          containerStyle={{ marginVertical: 20 }}
-          style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}
-          buttonStyle={{ height: 55, width: SCREEN_WIDTH - 40, borderRadius: 30, justifyContent: 'center', alignItems: 'center' }}
-          linearGradientProps = {{
-              colors: ['rgba(214,116,112,1)', 'rgba(233,174,87,1)'],
-              start: [1, 0],
-              end: [0.2, 0]
-              }}
-          title="Add to basket"
-          titleStyle={{ fontFamily: 'regular', fontSize: 20, color: 'white', textAlign: 'center' }}
-          onPress={() => alert('Item was added to basket')}
-          activeOpacity={1.0}
-          />
+          <View style={{ alignSelf: 'stretch', alignItems: 'left', padding: 5 }} >
+
+            <Text style={styles.sideDescription}> Title: {title}</Text>
+            <Text style={styles.sideDescription}> Sold by: {seller}</Text>
+
+            <View style={{ paddingTop: 5, alignItems: 'left' }}>
+              <Button
+                title="Location of seller"
+                onPress={() => this.props.navigation.navigate('Location')} >
+              </Button>
+              <Button
+                linearGradientProps={{
+                  colors: ['rgba(214,116,112,1)', 'rgba(233,174,87,1)'],
+                  start: [1, 0],
+                  end: [0.2, 0]
+                }}
+                title="Add to basket"
+                onPress={() => alert('Item was added to basket')}>
+              </Button>
+            </View>
+          </View>
+
         </View>
+
+        <View >
+          <Text style={{ paddingTop: 10 }}> Description: </Text>
+          <Text style={{ alignItems: 'center', padding: 5 }}>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur et magna sodales urna venenatis porttitor. Nullam elementum purus eget placerat tristique. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Mauris blandit magna in quam tristique bibendum. Aenean eget odio accumsan, hendrerit lectus fringilla, viverra enim. Fusce cursus faucibus vestibulum. Donec laoreet sem quis magna pharetra, et mollis ante sollicitudin. Maecenas enim libero, placerat at ex vel, fermentum dapibus erat. Donec vitae dignissim nunc. Aliquam luctus quis lectus vitae porttitor. Donec lobortis odio lorem, ullamcorper posuere nibh rhoncus a. Etiam pulvinar tellus sed tortor blandit cursus. Sed sed augue orci.
+          </Text>
+        </View>
+
+      </View >
     );
   }
 }
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: 'white',
+    flexDirection: "row",
+    alignItems: "stretch",
+    padding: 5
+  },
+  sideDescription: {
+    paddingTop: 5
   }
+
 });
